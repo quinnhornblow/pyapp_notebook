@@ -5,3 +5,5 @@ This example project has been built with [Rye](https://rye-up.com/). Rye is need
 To build the executable, run:
 
 ```./build_pyapp_notebook.ps1```
+
+The build currently uses a forked version of PyApp that adds a notebook build options: https://github.com/quinnhornblow/pyapp
