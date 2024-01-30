@@ -3,9 +3,10 @@
 # The executable will execute this function when it starts
 $env:PYAPP_EXEC_SPEC=''
 $env:PYAPP_EXEC_MODULE=''
-$env:PYAPP_EXEC_SCRIPT="notebook.py"
+$env:PYAPP_EXEC_NOTEBOOK=''
+$env:PYAPP_EXEC_SCRIPT="$((Get-Item -Path "./src/pyapp_notebook/example.py").FullName)"
 
-$executable_name = "pyapp_notebook"
+$executable_name = "pyapp_example"
 
 # We are building the wheel with poetry
 if (Test-Path -Path "./dist") {
@@ -21,7 +22,7 @@ $env:PYAPP_PROJECT_PATH=$wheel_file
 # if check if pyapp-latest folder not exists
 if (!(Test-Path -Path "./pyapp-latest")) {
     # Download the zip file from the URL
-    Invoke-WebRequest https://github.com/ofek/pyapp/releases/latest/download/source.zip -OutFile pyapp-source.zip
+    Invoke-WebRequest https://github.com/quinnhornblow/pyapp/releases/latest/download/source.zip -OutFile pyapp-source.zip
     # Extract the zip file to the temporary folder using Expand-Archive
     Expand-Archive -Path ./pyapp-source.zip -DestinationPath .
     # Move the extracted folder to the desired location and rename it
@@ -35,3 +36,6 @@ cargo build --release
 Move-Item target\release\pyapp.exe ..\$executable_name.exe -Force
 # Change the current directory to the root of the project
 Set-Location -Path ..
+
+# Remove the pyapp-latest folder
+Remove-Item -Path ./pyapp-latest -Recurse -Force

@@ -11,3 +11,4 @@ wheels/
 
 pyapp-latest/
 .ipynb_checkpoints/
+*.exe

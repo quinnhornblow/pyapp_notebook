@@ -1,9 +1,9 @@
 [project]
 name = "pyapp-notebook"
-version = "0.2.0"
+version = "0.3.0"
 description = "Add your description here"
 authors = [{ name = "Quinn Hornblow", email = "QHornblow@tonkintaylor.co.nz" }]
-dependencies = ["notebook>=7.0.7", "pandas>=2.2.0"]
+dependencies = ["notebook>=7.0.7", "seaborn>=0.13.2"]
 readme = "README.md"
 requires-python = ">= 3.11"
 
